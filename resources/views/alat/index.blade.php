@@ -120,22 +120,6 @@
             text-decoration: none;
         }
 
-        .alert-success {
-            background: linear-gradient(135deg, rgba(16,185,129,0.15), rgba(5,150,105,0.1));
-            border: 1px solid rgba(16,185,129,0.4);
-            border-radius: 12px;
-            padding: 14px 20px;
-            color: #6ee7b7;
-            font-size: 0.875rem;
-            font-weight: 500;
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            backdrop-filter: blur(10px);
-            position: relative; z-index: 10;
-            animation: slideDown 0.4s ease;
-        }
 
         .table-card {
             background: rgba(255,255,255,0.04);
@@ -247,12 +231,7 @@
             </a>
         </div>
 
-        @if (session('success'))
-            <div class="alert-success">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                {{ session('success') }}
-            </div>
-        @endif
+        @if (session('success')){{-- handled by global toast --}}@endif
 
         <div class="table-card">
             <div class="stats-bar">
@@ -296,10 +275,10 @@
                                             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
                                             Edit
                                         </a>
-                                        <form action="{{ route('alat.destroy', $item->id) }}" method="POST" class="inline" onsubmit="return confirm('Yakin ingin menghapus {{ $item->nama_alat }}?')">
+                                        <form action="{{ route('alat.destroy', $item->id) }}" method="POST" class="inline">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn-action btn-hapus">
+                                            <button type="button" class="btn-action btn-hapus" onclick="confirmDelete(event, '{{ addslashes($item->nama_alat) }}')">
                                                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
                                                 Hapus
                                             </button>
