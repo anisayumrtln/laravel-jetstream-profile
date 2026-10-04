@@ -304,10 +304,85 @@
                 transition: all 0.25s ease;
             }
 
-            .btn-modal-confirm-delete:hover {
+            /* ═══════════════════════════════════════════
+               CUSTOM NAVBAR & HEADER (DARK GLASS THEME)
+            ═══════════════════════════════════════════ */
+            .custom-navbar {
+                background: rgba(10, 22, 40, 0.95) !important;
+                backdrop-filter: blur(16px);
+                -webkit-backdrop-filter: blur(16px);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+                box-shadow: 0 4px 25px rgba(0, 0, 0, 0.4);
+            }
+
+            .custom-navbar .nav-link-item {
+                color: rgba(255, 255, 255, 0.7);
+                font-weight: 500;
+                transition: all 0.2s ease;
+            }
+            .custom-navbar .nav-link-item:hover,
+            .custom-navbar .nav-link-item.active {
+                color: #00d4ff !important;
+            }
+
+            .auth-btn-group {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+            }
+
+            .btn-nav-login {
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+                padding: 8px 18px;
+                border-radius: 10px;
+                font-size: 0.85rem;
+                font-weight: 600;
+                color: #ffffff !important;
+                background: rgba(255, 255, 255, 0.08);
+                border: 1px solid rgba(255, 255, 255, 0.18);
+                text-decoration: none !important;
+                transition: all 0.25s ease;
+            }
+            .btn-nav-login:hover {
+                background: rgba(255, 255, 255, 0.18);
+                border-color: rgba(255, 255, 255, 0.35);
+                color: #ffffff !important;
+                transform: translateY(-1px);
+            }
+
+            .btn-nav-register {
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+                padding: 8px 20px;
+                border-radius: 10px;
+                font-size: 0.85rem;
+                font-weight: 700;
+                color: #ffffff !important;
+                background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+                box-shadow: 0 4px 15px rgba(0, 212, 255, 0.35);
+                text-decoration: none !important;
+                transition: all 0.25s ease;
+            }
+            .btn-nav-register:hover {
                 transform: translateY(-2px);
-                box-shadow: 0 10px 25px rgba(239, 68, 68, 0.6);
-                background: linear-gradient(135deg, #f87171 0%, #ef4444 100%);
+                box-shadow: 0 8px 22px rgba(0, 212, 255, 0.55);
+                color: #ffffff !important;
+            }
+
+            .custom-header {
+                background: linear-gradient(90deg, rgba(13, 36, 68, 0.95), rgba(15, 52, 96, 0.95)) !important;
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            }
+            .custom-header h2 {
+                color: #ffffff !important;
+                font-weight: 700;
+                letter-spacing: -0.3px;
             }
         </style>
     </head>
@@ -317,13 +392,13 @@
         <!-- ═══ TOAST CONTAINER ═══ -->
         <div id="toast-container" aria-live="polite" aria-atomic="false"></div>
 
-        <div class="min-h-screen bg-gray-100">
+        <div class="min-h-screen bg-[#0a1628]">
             @livewire('navigation-menu')
 
             <!-- Page Heading -->
             @if (isset($header))
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                <header class="custom-header">
+                    <div class="max-w-7xl mx-auto py-5 px-4 sm:px-6 lg:px-8">
                         {{ $header }}
                     </div>
                 </header>

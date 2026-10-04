@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
+<nav x-data="{ open: false }" class="custom-navbar">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -12,7 +12,7 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                    <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')" class="text-white hover:text-cyan-400">
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
@@ -124,8 +124,16 @@
                         </x-dropdown>
                     </div>
                 @else
-                    <a href="{{ route('login') }}" class="text-sm font-semibold text-gray-600 hover:text-gray-900 me-4">Log in</a>
-                    <a href="{{ route('register') }}" class="text-sm font-semibold text-gray-600 hover:text-gray-900">Register</a>
+                    <div class="auth-btn-group">
+                        <a href="{{ route('login') }}" class="btn-nav-login">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+                            Log in
+                        </a>
+                        <a href="{{ route('register') }}" class="btn-nav-register">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+                            Register
+                        </a>
+                    </div>
                 @endauth
             </div>
 
