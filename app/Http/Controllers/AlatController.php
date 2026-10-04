@@ -33,7 +33,7 @@ class AlatController extends Controller
             'nama_alat' => 'required|max:100',
             'tahun'     => 'required|digits:4',
             'merek'     => 'required|max:60',
-            'lokasi'    => 'required|max:10',
+            'lokasi'    => 'required|max:100',
         ]);
 
         Alat::create($request->all());
@@ -68,7 +68,7 @@ class AlatController extends Controller
             'nama_alat' => 'required|max:100',
             'tahun'     => 'required|digits:4',
             'merek'     => 'required|max:60',
-            'lokasi'    => 'required|max:10',
+            'lokasi'    => 'required|max:100',
         ]);
 
         $alat = Alat::findOrFail($id);

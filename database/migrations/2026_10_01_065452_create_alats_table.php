@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nama_alat', 100);
             $table->year('tahun');
             $table->string('merek', 60);
-            $table->string('lokasi', 10);
+            $table->string('lokasi', 100);
             $table->timestamps();
         });
     }
