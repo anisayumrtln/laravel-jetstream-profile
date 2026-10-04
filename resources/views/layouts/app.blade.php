@@ -308,11 +308,69 @@
                CUSTOM NAVBAR & HEADER (DARK GLASS THEME)
             ═══════════════════════════════════════════ */
             .custom-navbar {
+                position: relative;
+                z-index: 9999 !important;
                 background: rgba(10, 22, 40, 0.95) !important;
                 backdrop-filter: blur(16px);
                 -webkit-backdrop-filter: blur(16px);
                 border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
                 box-shadow: 0 4px 25px rgba(0, 0, 0, 0.4);
+            }
+
+            /* Dropdown Menu Popup Fix & Dark Styling */
+            .custom-navbar [x-show="open"] {
+                z-index: 99999 !important;
+            }
+
+            .custom-navbar div.bg-white,
+            .custom-navbar .ring-black {
+                background: #0f172a !important;
+                border: 1px solid rgba(255, 255, 255, 0.15) !important;
+                box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7) !important;
+                border-radius: 12px !important;
+            }
+
+            .custom-navbar [x-show="open"] a,
+            .custom-navbar [x-show="open"] button {
+                color: rgba(255, 255, 255, 0.88) !important;
+                font-weight: 500;
+                transition: all 0.2s ease;
+            }
+
+            .custom-navbar [x-show="open"] a:hover,
+            .custom-navbar [x-show="open"] button:hover {
+                background: rgba(0, 212, 255, 0.12) !important;
+                color: #00d4ff !important;
+            }
+
+            .custom-navbar [x-show="open"] .text-gray-400 {
+                color: rgba(255, 255, 255, 0.45) !important;
+            }
+
+            .custom-navbar [x-show="open"] .border-gray-200,
+            .custom-navbar [x-show="open"] .border-t {
+                border-color: rgba(255, 255, 255, 0.1) !important;
+            }
+
+            /* Navigation Links High Contrast Hover Fix */
+            .custom-navbar a.inline-flex {
+                color: rgba(255, 255, 255, 0.8) !important;
+                border-bottom: 2px solid transparent !important;
+                transition: all 0.25s ease !important;
+                font-weight: 600 !important;
+            }
+
+            .custom-navbar a.inline-flex:hover {
+                color: #00d4ff !important;
+                border-bottom-color: #00d4ff !important;
+                text-shadow: 0 0 12px rgba(0, 212, 255, 0.6);
+            }
+
+            .custom-navbar a.inline-flex.border-indigo-400,
+            .custom-navbar a.inline-flex[class*="border-b-2"]:not(.border-transparent) {
+                color: #ffffff !important;
+                border-bottom-color: #00d4ff !important;
+                font-weight: 700 !important;
             }
 
             .custom-navbar .nav-link-item {

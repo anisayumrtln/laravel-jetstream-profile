@@ -15,6 +15,11 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        $totalAlat   = \App\Models\Alat::count();
+        $totalLokasi = \App\Models\Alat::distinct('lokasi')->count('lokasi');
+        $totalMerek  = \App\Models\Alat::distinct('merek')->count('merek');
+        $latestAlats = \App\Models\Alat::latest()->take(5)->get();
+
+        return view('dashboard', compact('totalAlat', 'totalLokasi', 'totalMerek', 'latestAlats'));
     })->name('dashboard');
 });
