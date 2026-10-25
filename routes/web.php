@@ -16,10 +16,11 @@ Route::middleware([
 ])->group(function () {
     Route::get('/dashboard', function () {
         $totalAlat   = \App\Models\Alat::count();
+        $totalUnit   = (int) \App\Models\Alat::sum('stok');
         $totalLokasi = \App\Models\Alat::distinct('lokasi')->count('lokasi');
         $totalMerek  = \App\Models\Alat::distinct('merek')->count('merek');
-        $latestAlats = \App\Models\Alat::latest()->take(5)->get();
+        $latestAlats = \App\Models\Alat::latest()->take(6)->get();
 
-        return view('dashboard', compact('totalAlat', 'totalLokasi', 'totalMerek', 'latestAlats'));
+        return view('dashboard', compact('totalAlat', 'totalUnit', 'totalLokasi', 'totalMerek', 'latestAlats'));
     })->name('dashboard');
 });

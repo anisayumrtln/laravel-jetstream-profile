@@ -187,13 +187,13 @@
             }
 
             .custom-modal-card {
-                background: #0f172a;
-                border: 1.5px solid rgba(239, 68, 68, 0.4);
+                background: #ffffff;
+                border: 1px solid #fee2e2;
                 border-radius: 18px;
                 width: 100%;
                 max-width: 440px;
                 padding: 28px;
-                box-shadow: 0 30px 70px rgba(0, 0, 0, 0.7), 0 0 30px rgba(239, 68, 68, 0.15);
+                box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
                 transform: scale(0.9) translateY(15px);
                 transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
                 position: relative;
@@ -223,18 +223,17 @@
             .custom-modal-icon-danger {
                 width: 48px; height: 48px;
                 border-radius: 12px;
-                background: rgba(239, 68, 68, 0.18);
-                border: 1px solid rgba(239, 68, 68, 0.4);
-                color: #f87171;
+                background: #fef2f2;
+                border: 1px solid #fecaca;
+                color: #ef4444;
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 flex-shrink: 0;
-                box-shadow: 0 0 20px rgba(239, 68, 68, 0.25);
             }
 
             .custom-modal-title {
-                color: #ffffff;
+                color: #0f172a;
                 font-size: 1.15rem;
                 font-weight: 800;
                 margin: 0;
@@ -242,24 +241,24 @@
             }
 
             .custom-modal-subtitle {
-                color: rgba(255, 255, 255, 0.5);
+                color: #64748b;
                 font-size: 0.8rem;
                 margin: 2px 0 0 0;
             }
 
             .custom-modal-body {
-                color: rgba(255, 255, 255, 0.85);
+                color: #334155;
                 font-size: 0.92rem;
                 line-height: 1.5;
-                background: rgba(255, 255, 255, 0.04);
-                border: 1px solid rgba(255, 255, 255, 0.07);
+                background: #fef2f2;
+                border: 1px solid #fee2e2;
                 border-radius: 12px;
                 padding: 14px 18px;
                 margin-bottom: 24px;
             }
 
             .custom-modal-highlight {
-                color: #fca5a5;
+                color: #b91c1c;
                 font-weight: 700;
                 word-break: break-word;
             }
@@ -272,9 +271,9 @@
             }
 
             .btn-modal-cancel {
-                background: rgba(255, 255, 255, 0.08);
-                border: 1px solid rgba(255, 255, 255, 0.15);
-                color: rgba(255, 255, 255, 0.8);
+                background: #f8fafc;
+                border: 1px solid #cbd5e1;
+                color: #475569;
                 font-size: 0.875rem;
                 font-weight: 600;
                 padding: 10px 20px;
@@ -284,8 +283,8 @@
             }
 
             .btn-modal-cancel:hover {
-                background: rgba(255, 255, 255, 0.16);
-                color: #ffffff;
+                background: #e2e8f0;
+                color: #1e293b;
             }
 
             .btn-modal-confirm-delete {
@@ -305,82 +304,79 @@
             }
 
             /* ═══════════════════════════════════════════
-               CUSTOM NAVBAR & HEADER (DARK GLASS THEME)
+               CUSTOM NAVBAR & HEADER (CLEAN MEDICAL MINT THEME)
             ═══════════════════════════════════════════ */
             .custom-navbar {
                 position: relative;
                 z-index: 9999 !important;
-                background: rgba(10, 22, 40, 0.95) !important;
-                backdrop-filter: blur(16px);
-                -webkit-backdrop-filter: blur(16px);
-                border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
-                box-shadow: 0 4px 25px rgba(0, 0, 0, 0.4);
+                background: #ffffff !important;
+                border-bottom: 1px solid #e2e8f0 !important;
+                box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05);
             }
 
-            /* Dropdown Menu Popup Fix & Dark Styling */
+            /* Dropdown Menu Popup & Clean Light Mint Styling */
             .custom-navbar [x-show="open"] {
                 z-index: 99999 !important;
             }
 
             .custom-navbar div.bg-white,
             .custom-navbar .ring-black {
-                background: #0f172a !important;
-                border: 1px solid rgba(255, 255, 255, 0.15) !important;
-                box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7) !important;
+                background: #ffffff !important;
+                border: 1px solid #e2e8f0 !important;
+                box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04) !important;
                 border-radius: 12px !important;
             }
 
             .custom-navbar [x-show="open"] a,
             .custom-navbar [x-show="open"] button {
-                color: rgba(255, 255, 255, 0.88) !important;
+                color: #334155 !important;
                 font-weight: 500;
                 transition: all 0.2s ease;
             }
 
             .custom-navbar [x-show="open"] a:hover,
             .custom-navbar [x-show="open"] button:hover {
-                background: rgba(0, 212, 255, 0.12) !important;
-                color: #00d4ff !important;
+                background: #ecfdf5 !important;
+                color: #059669 !important;
             }
 
             .custom-navbar [x-show="open"] .text-gray-400 {
-                color: rgba(255, 255, 255, 0.45) !important;
+                color: #64748b !important;
             }
 
             .custom-navbar [x-show="open"] .border-gray-200,
             .custom-navbar [x-show="open"] .border-t {
-                border-color: rgba(255, 255, 255, 0.1) !important;
+                border-color: #f1f5f9 !important;
             }
 
-            /* Navigation Links High Contrast Hover Fix */
+            /* Navigation Links Medical Mint Styling */
             .custom-navbar a.inline-flex {
-                color: rgba(255, 255, 255, 0.8) !important;
+                color: #475569 !important;
                 border-bottom: 2px solid transparent !important;
                 transition: all 0.25s ease !important;
                 font-weight: 600 !important;
             }
 
             .custom-navbar a.inline-flex:hover {
-                color: #00d4ff !important;
-                border-bottom-color: #00d4ff !important;
-                text-shadow: 0 0 12px rgba(0, 212, 255, 0.6);
+                color: #059669 !important;
+                border-bottom-color: #10b981 !important;
             }
 
             .custom-navbar a.inline-flex.border-indigo-400,
             .custom-navbar a.inline-flex[class*="border-b-2"]:not(.border-transparent) {
-                color: #ffffff !important;
-                border-bottom-color: #00d4ff !important;
+                color: #047857 !important;
+                border-bottom-color: #10b981 !important;
                 font-weight: 700 !important;
             }
 
             .custom-navbar .nav-link-item {
-                color: rgba(255, 255, 255, 0.7);
+                color: #475569;
                 font-weight: 500;
                 transition: all 0.2s ease;
             }
             .custom-navbar .nav-link-item:hover,
             .custom-navbar .nav-link-item.active {
-                color: #00d4ff !important;
+                color: #059669 !important;
             }
 
             .auth-btn-group {
@@ -397,16 +393,15 @@
                 border-radius: 10px;
                 font-size: 0.85rem;
                 font-weight: 600;
-                color: #ffffff !important;
-                background: rgba(255, 255, 255, 0.08);
-                border: 1px solid rgba(255, 255, 255, 0.18);
+                color: #0f766e !important;
+                background: #f0fdfa;
+                border: 1px solid #ccfbf1;
                 text-decoration: none !important;
                 transition: all 0.25s ease;
             }
             .btn-nav-login:hover {
-                background: rgba(255, 255, 255, 0.18);
-                border-color: rgba(255, 255, 255, 0.35);
-                color: #ffffff !important;
+                background: #ccfbf1;
+                color: #115e59 !important;
                 transform: translateY(-1px);
             }
 
@@ -419,44 +414,42 @@
                 font-size: 0.85rem;
                 font-weight: 700;
                 color: #ffffff !important;
-                background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
-                box-shadow: 0 4px 15px rgba(0, 212, 255, 0.35);
+                background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+                box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
                 text-decoration: none !important;
                 transition: all 0.25s ease;
             }
             .btn-nav-register:hover {
                 transform: translateY(-2px);
-                box-shadow: 0 8px 22px rgba(0, 212, 255, 0.55);
+                box-shadow: 0 6px 18px rgba(16, 185, 129, 0.35);
                 color: #ffffff !important;
             }
 
             .custom-header {
-                background: linear-gradient(90deg, rgba(13, 36, 68, 0.95), rgba(15, 52, 96, 0.95)) !important;
-                backdrop-filter: blur(12px);
-                -webkit-backdrop-filter: blur(12px);
-                border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
-                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+                background: linear-gradient(90deg, #ecfdf5, #f0fdf4) !important;
+                border-bottom: 1px solid #d1fae5 !important;
+                box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.03);
             }
             .custom-header h2 {
-                color: #ffffff !important;
+                color: #065f46 !important;
                 font-weight: 700;
                 letter-spacing: -0.3px;
             }
         </style>
     </head>
-    <body class="font-sans antialiased">
+    <body class="font-sans antialiased text-slate-800 bg-slate-50">
         <x-banner />
 
         <!-- ═══ TOAST CONTAINER ═══ -->
         <div id="toast-container" aria-live="polite" aria-atomic="false"></div>
 
-        <div class="min-h-screen bg-[#0a1628]">
+        <div class="min-h-screen bg-slate-50">
             @livewire('navigation-menu')
 
             <!-- Page Heading -->
             @if (isset($header))
                 <header class="custom-header">
-                    <div class="max-w-7xl mx-auto py-5 px-4 sm:px-6 lg:px-8">
+                    <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
                         {{ $header }}
                     </div>
                 </header>

@@ -1,276 +1,383 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Edit Data Alat Medis') }}
-        </h2>
+        <div class="flex items-center justify-between">
+            <h2 class="font-bold text-xl text-emerald-950 leading-tight flex items-center gap-2">
+                <span>✏️</span> {{ __('Edit Spesifikasi & Stok Alat Medis') }}
+            </h2>
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-amber-100 text-amber-800 border border-amber-200">
+                🔒 Mode Edit Khusus Admin / Logistik
+            </span>
+        </div>
     </x-slot>
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap');
 
-        .edit-page * { font-family: 'Inter', sans-serif; box-sizing: border-box; }
+        .edit-page * {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            box-sizing: border-box;
+        }
+
+        .mono-code {
+            font-family: 'JetBrains Mono', monospace !important;
+        }
 
         .edit-page {
-            min-height: 100vh;
-            background: linear-gradient(135deg, #0a1628 0%, #0d2444 35%, #0f3460 65%, #1a4a7a 100%);
-            padding: 2.5rem 1.5rem;
+            min-height: calc(100vh - 65px);
+            background: linear-gradient(180deg, #f0fdf9 0%, #f8fafc 40%, #f8fafc 100%);
+            padding: 2rem 1.5rem 4rem;
             position: relative;
-            overflow: hidden;
             display: flex;
             flex-direction: column;
             align-items: center;
-        }
-
-        .edit-page::before {
-            content: '';
-            position: absolute;
-            top: -200px; right: -120px;
-            width: 460px; height: 460px;
-            background: radial-gradient(circle, rgba(245,158,11,0.08) 0%, transparent 70%);
-            border-radius: 50%;
-            animation: blobFloat 9s ease-in-out infinite;
-            pointer-events: none;
-        }
-
-        .edit-page::after {
-            content: '';
-            position: absolute;
-            bottom: -120px; left: -80px;
-            width: 380px; height: 380px;
-            background: radial-gradient(circle, rgba(99,102,241,0.1) 0%, transparent 70%);
-            border-radius: 50%;
-            animation: blobFloat 12s ease-in-out infinite reverse;
-            pointer-events: none;
-        }
-
-        @keyframes blobFloat {
-            0%,100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-25px) scale(1.04); }
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to   { opacity: 1; transform: translateY(0); }
         }
 
         .back-link {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            color: rgba(255,255,255,0.5);
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 500;
+            color: #64748b;
+            text-decoration: none !important;
+            font-size: 0.88rem;
+            font-weight: 600;
             margin-bottom: 1.5rem;
             align-self: flex-start;
-            transition: color 0.2s ease;
-            position: relative;
-            z-index: 10;
+            max-width: 720px;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            transition: all 0.2s ease;
         }
 
-        .back-link:hover { color: rgba(255,255,255,0.9); text-decoration: none; }
+        .back-link:hover {
+            color: #d97706;
+            transform: translateX(-3px);
+        }
 
         .edit-card {
-            background: rgba(255,255,255,0.05);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border: 1px solid rgba(255,255,255,0.12);
-            border-radius: 24px;
-            padding: 2.5rem 2rem;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 20px;
+            padding: 2.2rem 2.2rem;
             width: 100%;
-            max-width: 560px;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.05) inset;
-            position: relative;
-            z-index: 10;
-            animation: fadeInUp 0.6s cubic-bezier(0.16,1,0.3,1);
+            max-width: 720px;
+            box-shadow: 0 4px 25px -2px rgba(245, 158, 11, 0.08), 0 2px 6px -1px rgba(0, 0, 0, 0.04);
         }
 
         .edit-card-header {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            margin-bottom: 2rem;
+            gap: 1.2rem;
+            margin-bottom: 1.8rem;
             padding-bottom: 1.5rem;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
+            border-bottom: 1px solid #f1f5f9;
         }
 
-        .edit-card-icon {
-            width: 48px; height: 48px;
-            background: linear-gradient(135deg, #f59e0b, #d97706);
+        .edit-icon-box {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
             border-radius: 14px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 20px;
-            box-shadow: 0 8px 20px rgba(245,158,11,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            box-shadow: 0 4px 14px rgba(245, 158, 11, 0.25);
             flex-shrink: 0;
         }
 
-        .edit-card-title { color: #fff; font-size: 1.3rem; font-weight: 800; margin: 0; }
-        .edit-card-subtitle { color: rgba(255,255,255,0.4); font-size: 0.8rem; margin: 3px 0 0 0; }
+        .edit-title-h1 {
+            color: #0f172a;
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin: 0 0 3px 0;
+            letter-spacing: -0.3px;
+        }
 
-        .form-body { display: flex; flex-direction: column; gap: 1.25rem; }
+        .edit-title-sub {
+            color: #64748b;
+            font-size: 0.85rem;
+            margin: 0;
+        }
 
-        .form-group { display: flex; flex-direction: column; gap: 6px; }
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+        }
+
+        .col-span-2 {
+            grid-column: span 2;
+        }
+
+        @media (max-width: 640px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            .col-span-2 {
+                grid-column: span 1;
+            }
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
 
         .form-label {
             display: flex;
             align-items: center;
             gap: 6px;
-            color: rgba(255,255,255,0.7);
+            color: #334155;
             font-size: 0.82rem;
-            font-weight: 600;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.6px;
+            letter-spacing: 0.5px;
         }
 
-        .form-input {
+        .form-input, .form-select, .form-textarea {
             width: 100%;
-            background: rgba(255,255,255,0.07);
-            border: 1px solid rgba(255,255,255,0.14);
-            border-radius: 12px;
-            padding: 13px 16px;
-            color: #fff;
-            font-size: 0.92rem;
-            font-family: 'Inter', sans-serif;
-            transition: all 0.3s ease;
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            padding: 11px 14px;
+            color: #0f172a;
+            font-size: 0.9rem;
             outline: none;
+            transition: all 0.2s ease;
         }
 
-        .form-input::placeholder { color: rgba(255,255,255,0.25); }
-
-        .form-input:focus {
-            border-color: rgba(245,158,11,0.6);
-            background: rgba(245,158,11,0.05);
-            box-shadow: 0 0 0 3px rgba(245,158,11,0.12), 0 0 20px rgba(245,158,11,0.06);
+        .form-select option {
+            background: #ffffff;
+            color: #0f172a;
         }
 
-        .form-input:hover:not(:focus) { border-color: rgba(255,255,255,0.22); }
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            background: #ffffff;
+            border-color: #f59e0b;
+            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.15);
+        }
 
-        .form-error { color: #f87171; font-size: 0.78rem; margin-top: 2px; }
+        .form-error {
+            color: #dc2626;
+            font-size: 0.78rem;
+            font-weight: 600;
+            margin-top: 2px;
+        }
 
         .form-actions {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-top: 1.5rem;
+            margin-top: 2rem;
             padding-top: 1.5rem;
-            border-top: 1px solid rgba(255,255,255,0.08);
+            border-top: 1px solid #f1f5f9;
             gap: 1rem;
+            flex-wrap: wrap;
         }
 
         .btn-batal {
             display: inline-flex;
             align-items: center;
-            gap: 6px;
-            color: rgba(255,255,255,0.5);
-            text-decoration: none;
-            font-size: 0.875rem;
-            font-weight: 500;
-            padding: 11px 20px;
+            gap: 8px;
+            color: #475569;
+            text-decoration: none !important;
+            font-size: 0.88rem;
+            font-weight: 600;
+            padding: 11px 22px;
             border-radius: 10px;
-            border: 1px solid rgba(255,255,255,0.1);
+            border: 1px solid #cbd5e1;
+            background: #f8fafc;
             transition: all 0.2s ease;
         }
 
         .btn-batal:hover {
-            color: rgba(255,255,255,0.85);
-            border-color: rgba(255,255,255,0.25);
-            background: rgba(255,255,255,0.05);
-            text-decoration: none;
+            color: #0f172a;
+            border-color: #94a3b8;
+            background: #f1f5f9;
         }
 
         .btn-update {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: linear-gradient(135deg, #f59e0b, #d97706);
-            color: #fff;
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: #ffffff !important;
             border: none;
             font-weight: 700;
             font-size: 0.9rem;
             padding: 12px 28px;
-            border-radius: 12px;
+            border-radius: 10px;
             cursor: pointer;
-            box-shadow: 0 6px 20px rgba(245,158,11,0.35);
-            transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
-            letter-spacing: 0.3px;
-            position: relative;
-            overflow: hidden;
+            box-shadow: 0 4px 14px rgba(245, 158, 11, 0.35);
+            transition: all 0.25s ease;
         }
 
-        .btn-update::before {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%;
-            width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .btn-update:hover::before { left: 100%; }
         .btn-update:hover {
-            transform: translateY(-2px) scale(1.03);
-            box-shadow: 0 10px 28px rgba(245,158,11,0.5);
-        }
-
-        .btn-update:active { transform: scale(0.98); }
-
-        /* Changed indicator */
-        .edit-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            background: rgba(245,158,11,0.12);
-            border: 1px solid rgba(245,158,11,0.3);
-            color: #fcd34d;
-            font-size: 0.72rem;
-            font-weight: 600;
-            padding: 2px 8px;
-            border-radius: 20px;
-            margin-left: 6px;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.45);
         }
     </style>
 
     <div class="edit-page">
         <a href="{{ route('alat.index') }}" class="back-link">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-            Kembali ke Daftar
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+            Kembali ke Sistem Inventaris
         </a>
 
         <div class="edit-card">
             <div class="edit-card-header">
-                <div class="edit-card-icon">✏️</div>
+                <div class="edit-icon-box">✏️</div>
                 <div>
-                    <h1 class="edit-card-title">Edit Alat Medis <span class="edit-badge">✦ Mode Edit</span></h1>
-                    <p class="edit-card-subtitle">Perbarui informasi alat medis di bawah ini</p>
+                    <h1 class="edit-title-h1">Edit Spesifikasi & Stok Alat</h1>
+                    <p class="edit-title-sub">Perbarui informasi teknis, status kesiapan, atau kuantitas unit alkes</p>
                 </div>
             </div>
 
-            <form action="{{ route('alat.update', $alat->id) }}" method="POST" class="form-body">
+            <form action="{{ route('alat.update', $alat->id) }}" method="POST">
                 @csrf
                 @method('PUT')
 
-                <div class="form-group">
-                    <label class="form-label">🏥 Nama Alat</label>
-                    <input type="text" name="nama_alat" value="{{ old('nama_alat', $alat->nama_alat) }}" class="form-input" required>
-                    @error('nama_alat') <span class="form-error">⚠ {{ $message }}</span> @enderror
-                </div>
+                <div class="form-grid">
+                    {{-- Kode Alkes --}}
+                    <div class="form-group">
+                        <label class="form-label">
+                            <span>🏷️</span> Kode Alkes
+                        </label>
+                        <input 
+                            type="text" 
+                            name="kode_alat" 
+                            value="{{ old('kode_alat', $alat->kode_alat ?? ('ALK-' . str_pad($alat->id, 3, '0', STR_PAD_LEFT))) }}" 
+                            class="form-input mono-code font-bold uppercase" 
+                            required
+                        >
+                        @error('kode_alat') <span class="form-error">⚠ {{ $message }}</span> @enderror
+                    </div>
 
-                <div class="form-group">
-                    <label class="form-label">📅 Tahun Pengadaan</label>
-                    <input type="number" name="tahun" value="{{ old('tahun', $alat->tahun) }}" class="form-input" min="1990" max="2030" required>
-                    @error('tahun') <span class="form-error">⚠ {{ $message }}</span> @enderror
-                </div>
+                    {{-- Kategori --}}
+                    <div class="form-group">
+                        <label class="form-label">
+                            <span>🗂️</span> Kategori Alkes
+                        </label>
+                        <select name="kategori" class="form-select" required>
+                            @foreach ($kategoris as $kat)
+                                <option value="{{ $kat }}" {{ old('kategori', $alat->kategori) === $kat ? 'selected' : '' }}>
+                                    {{ $kat }}
+                                </option>
+                            @endforeach
+                        </select>
+                        @error('kategori') <span class="form-error">⚠ {{ $message }}</span> @enderror
+                    </div>
 
-                <div class="form-group">
-                    <label class="form-label">🏷️ Merek / Pabrikan</label>
-                    <input type="text" name="merek" value="{{ old('merek', $alat->merek) }}" class="form-input" required>
-                    @error('merek') <span class="form-error">⚠ {{ $message }}</span> @enderror
-                </div>
+                    {{-- Nama Alat Medis --}}
+                    <div class="form-group col-span-2">
+                        <label class="form-label">
+                            <span>🏥</span> Nama Alat Kesehatan Medis
+                        </label>
+                        <input 
+                            type="text" 
+                            name="nama_alat" 
+                            value="{{ old('nama_alat', $alat->nama_alat) }}" 
+                            class="form-input font-semibold" 
+                            required
+                        >
+                        @error('nama_alat') <span class="form-error">⚠ {{ $message }}</span> @enderror
+                    </div>
 
-                <div class="form-group">
-                    <label class="form-label">📍 Lokasi Ruangan</label>
-                    <input type="text" name="lokasi" value="{{ old('lokasi', $alat->lokasi) }}" class="form-input" required>
-                    @error('lokasi') <span class="form-error">⚠ {{ $message }}</span> @enderror
+                    {{-- Stok Unit --}}
+                    <div class="form-group">
+                        <label class="form-label">
+                            <span>📦</span> Stok Unit Tersedia
+                        </label>
+                        <input 
+                            type="number" 
+                            name="stok" 
+                            value="{{ old('stok', $alat->stok ?? 1) }}" 
+                            class="form-input font-bold" 
+                            min="0" 
+                            max="9999" 
+                            required
+                        >
+                        @error('stok') <span class="form-error">⚠ {{ $message }}</span> @enderror
+                    </div>
+
+                    {{-- Status Operasional --}}
+                    <div class="form-group">
+                        <label class="form-label">
+                            <span>⚡</span> Status Operasional
+                        </label>
+                        <select name="status" class="form-select" required>
+                            @php $currentStatus = old('status', $alat->status ?? 'Tersedia'); @endphp
+                            <option value="Tersedia" {{ $currentStatus === 'Tersedia' ? 'selected' : '' }}>Tersedia (Siap Pakai)</option>
+                            <option value="Digunakan" {{ $currentStatus === 'Digunakan' ? 'selected' : '' }}>Digunakan di Ruangan</option>
+                            <option value="Pemeliharaan" {{ $currentStatus === 'Pemeliharaan' ? 'selected' : '' }}>Pemeliharaan Rutin</option>
+                            <option value="Kalibrasi" {{ $currentStatus === 'Kalibrasi' ? 'selected' : '' }}>Proses Kalibrasi Lab</option>
+                            <option value="Rusak" {{ $currentStatus === 'Rusak' ? 'selected' : '' }}>Rusak / Butuh Servis</option>
+                        </select>
+                        @error('status') <span class="form-error">⚠ {{ $message }}</span> @enderror
+                    </div>
+
+                    {{-- Merek / Pabrikan --}}
+                    <div class="form-group">
+                        <label class="form-label">
+                            <span>🏢</span> Merek / Pabrikan
+                        </label>
+                        <input 
+                            type="text" 
+                            name="merek" 
+                            value="{{ old('merek', $alat->merek) }}" 
+                            class="form-input" 
+                            required
+                        >
+                        @error('merek') <span class="form-error">⚠ {{ $message }}</span> @enderror
+                    </div>
+
+                    {{-- Tahun Pengadaan --}}
+                    <div class="form-group">
+                        <label class="form-label">
+                            <span>📅</span> Tahun Pengadaan
+                        </label>
+                        <input 
+                            type="number" 
+                            name="tahun" 
+                            value="{{ old('tahun', $alat->tahun) }}" 
+                            class="form-input" 
+                            min="1990" 
+                            max="{{ date('Y') + 1 }}" 
+                            required
+                        >
+                        @error('tahun') <span class="form-error">⚠ {{ $message }}</span> @enderror
+                    </div>
+
+                    {{-- Lokasi Ruangan / Laboratorium --}}
+                    <div class="form-group col-span-2">
+                        <label class="form-label">
+                            <span>📍</span> Lokasi Penempatan Ruangan / Lab
+                        </label>
+                        <input 
+                            type="text" 
+                            name="lokasi_lab" 
+                            value="{{ old('lokasi_lab', $alat->lokasi_lab ?? $alat->lokasi) }}" 
+                            class="form-input" 
+                            required
+                        >
+                        @error('lokasi_lab') <span class="form-error">⚠ {{ $message }}</span> @enderror
+                    </div>
+
+                    {{-- Deskripsi / Spesifikasi Teknis --}}
+                    <div class="form-group col-span-2">
+                        <label class="form-label">
+                            <span>📝</span> Deskripsi & Catatan Spesifikasi Teknis
+                        </label>
+                        <textarea 
+                            name="deskripsi" 
+                            rows="3" 
+                            class="form-textarea" 
+                            placeholder="Catatan serial number, nomor kalibrasi, atau riwayat perawatan..."
+                        >{{ old('deskripsi', $alat->deskripsi) }}</textarea>
+                        @error('deskripsi') <span class="form-error">⚠ {{ $message }}</span> @enderror
+                    </div>
                 </div>
 
                 <div class="form-actions">
@@ -280,7 +387,7 @@
                     </a>
                     <button type="submit" class="btn-update">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                        Update Data
+                        Perbarui Spesifikasi & Stok
                     </button>
                 </div>
             </form>
