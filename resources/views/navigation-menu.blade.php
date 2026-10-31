@@ -18,6 +18,9 @@
                     <x-nav-link href="{{ route('alat.index') }}" :active="request()->routeIs('alat.*')" class="text-slate-600 hover:text-emerald-600 font-semibold">
                         🩺 {{ __('Sistem Inventaris') }}
                     </x-nav-link>
+                    <x-nav-link href="{{ route('transaksi.index') }}" :active="request()->routeIs('transaksi.*')" class="text-slate-600 hover:text-emerald-600 font-semibold">
+                        💳 {{ __('Pesanan Masuk (Midtrans)') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -163,6 +166,9 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link href="{{ route('alat.index') }}" :active="request()->routeIs('alat.*')">
                 🩺 {{ __('Sistem Inventaris (Admin/Logistik)') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link href="{{ route('transaksi.index') }}" :active="request()->routeIs('transaksi.*')">
+                💳 {{ __('Pesanan Masuk (Midtrans)') }}
             </x-responsive-nav-link>
         </div>
 

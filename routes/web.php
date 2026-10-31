@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AlatController;
+use App\Http\Controllers\TransaksiController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -23,4 +24,8 @@ Route::middleware([
 
         return view('dashboard', compact('totalAlat', 'totalUnit', 'totalLokasi', 'totalMerek', 'latestAlats'));
     })->name('dashboard');
+
+    Route::get('/transaksi', [TransaksiController::class, 'index'])->name('transaksi.index');
+    Route::post('/transaksi/{id}/mark-success', [TransaksiController::class, 'markSuccess'])->name('transaksi.markSuccess');
+    Route::post('/transaksi/{id}/mark-failed', [TransaksiController::class, 'markFailed'])->name('transaksi.markFailed');
 });
